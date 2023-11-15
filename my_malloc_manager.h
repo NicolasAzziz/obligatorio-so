@@ -39,7 +39,8 @@ typedef struct AllocationHeader // All malloc calls have a this header located b
 extern int first_fit(unsigned char *bitmap, size_t bitmap_size, size_t units_needed);
 extern void print_bitmap(unsigned char *bitmap, size_t bitmap_size);
 extern void clear_bits(unsigned char *bitmap, size_t start_index, size_t units_to_free);
-extern void set_or_clear_bits(int set, unsigned char *bitmap, size_t bitmap_size, size_t units_to_modify);
+void set_or_clear_bits(int set, Bitmap bitmap, uint16_t start_byte_index, uint16_t start_bit_index, uint16_t qty);
+// extern void set_or_clear_bits(int set, unsigned char *bitmap, size_t bitmap_size, size_t units_to_modify);
 
 
 #endif // MY_ALLOC_MANAGER_H

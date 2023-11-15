@@ -1,5 +1,6 @@
 #include "my_malloc_manager.h"
 #include <stdint.h>
+#include <stdio.h>
 
 int main() {
     unsigned char bitmap[BITMAP_SIZE] = {0};
@@ -27,16 +28,21 @@ int main() {
         printf("\n");
     }
 
-    units_needed = 20;
-    units_to_free = 10;
-
-    set_or_clear_bits(1, bitmap, BITMAP_SIZE, units_needed);
-    printf("Espacio de %zu bits encontrado\n", units_needed);
+    uint16_t start_byte_index = 8;
+    uint16_t start_bit_index = 3;
+    uint16_t qty = 8;
+    
+    set_or_clear_bits(1, bitmap, start_byte_index, start_bit_index, qty);
+    // set_or_clear_bits(1, bitmap, BITMAP_SIZE, units_needed);
+    // printf("Espacio de %" PRIu16 " bits encontrado\n", qty);
+    printf("SET_OR_CLEAR_BITS SET = 1\n");
     print_bitmap(bitmap, BITMAP_SIZE);
     printf("\n");
 
-    set_or_clear_bits(0, bitmap, BITMAP_SIZE, units_to_free);
-    printf("Espacio de %zu bits liberado con funcion SET_OR_CLEAR_BITS\n", units_to_free);
+    set_or_clear_bits(0, bitmap, start_byte_index, start_bit_index, qty);
+    //set_or_clear_bits(0, bitmap, BITMAP_SIZE, units_to_free);
+    // printf("Espacio de %zu bits liberado con funcion SET_OR_CLEAR_BITS\n", qty);
+    printf("SET_OR_CLEAR_BITS SET = 0\n");
     print_bitmap(bitmap, BITMAP_SIZE);
     printf("\n");
 
